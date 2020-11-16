@@ -1,0 +1,65 @@
+$base: 4px;
+
+$font-size-xs: 11px;
+$font-size-sm: 13px;
+$font-size-md: 15px;
+$font-size-lg: 17px;
+
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;
+
+$colorPrimary: #b71c1c;
+$colorPrimaryLight: #ea5656;
+$colorAlternate: #719bfe;
+$colorAlternateLight: #90b0fc;
+
+$colorFooter: #483a3a;
+$colorBackground: #fcf9f9;
+$colorGrey: #c4c4c4;
+$colorDarkGrey: #808080;
+$colorErrorLight: #ffebeb;
+$colorError: #ff6666;
+$colorDanger: #cc0e0e;
+$colorWarning: #f8a80d;
+
+$colorBlack: #400000;
+$colorSuccess: #599e47;
+
+$colorRealBlack: #000000;
+$colorWhite: #ffffff;
+$colorAlternateWhite: #f4f4f4;
+
+@mixin respond_to($var) {
+    @if $var == phone_portrait {
+        @media only screen and (min-width: 374px) {
+            @content;
+        }
+    } @else if $var == phone_landscape {
+        @media only screen and (min-width: 666px) {
+            @content;
+        }
+    } @else if $var == phablet_portrait {
+        @media only screen and (min-width: 413px) {
+            @content;
+        }
+    } @else if $var == tablet_landscape {
+        @media only screen and (min-width: 1023px) {
+            @content;
+        }
+    } @else if $var == tablet_portrait {
+        @media only screen and (min-width: 767px) {
+            @content;
+        }
+    } @else if $var == laptop {
+        @media only screen and (min-width: 1279px) {
+            @content;
+        }
+    } @else if $var == desktop {
+        @media only screen and (min-width: 1649px) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}

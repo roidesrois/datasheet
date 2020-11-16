@@ -1,0 +1,24 @@
+@import '../../theme/vars';
+
+.modal {
+    transition: 0.5s opacity, 0.5s transform;
+    text-align: center;
+    width: 90vw;
+    @include respond_to(tablet_portrait) {
+        width: auto;
+    }
+}
+
+.footer {
+    text-align: right;
+    padding: 20px;
+}
+
+.content {
+    font-size: 1.5em;
+    color: $colorDanger;
+    h2 {
+        color: $colorDarkGrey;
+        margin-top: 20px;
+    }
+}

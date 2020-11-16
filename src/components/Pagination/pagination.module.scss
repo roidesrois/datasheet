@@ -1,0 +1,143 @@
+@import '../../theme/vars';
+
+$label-color: $colorDarkGrey;
+$label-font-size: $font-size-md;
+$screen-size: $screen-sm;
+
+.currentPage {
+    display: inline-block;
+    font-size: $font-size-lg;
+    vertical-align: top;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .prev,
+    .next,
+    .pageNumber {
+        -webkit-display: inline-flex;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: $base * 10 !important;
+        min-width: $base * 10 !important;
+        max-width: $base * 10 !important;
+        height: $base * 10 !important;
+        min-height: $base * 10 !important;
+        max-height: $base * 10 !important;
+        padding: 0 !important;
+    }
+
+    .prev {
+        margin-right: $base * 2 !important;
+    }
+
+    .next {
+        margin-left: $base * 2 !important;
+    }
+
+    .pageNumber {
+        margin: 0 !important;
+        color: $colorDarkGrey !important;
+
+        &:hover:not(._static) {
+            background-color: $colorGrey !important;
+        }
+
+        &.active {
+            color: $colorSuccess !important;
+            cursor: auto !important;
+        }
+    }
+}
+
+.total {
+    /** Fake content for empty theme classes (used by atsm). */
+
+    &__box {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: $label-font-size;
+
+        @media (max-width: $screen-size) {
+            grid-row: 2/3;
+            grid-column: 2/3;
+            justify-content: flex-end;
+        }
+    }
+
+    &__label {
+        display: inline-block;
+        color: $label-color;
+    }
+
+    &__count {
+        display: inline-block;
+        margin-left: $base * 4;
+    }
+}
+
+.pagination {
+    display: grid;
+    grid-template-columns: 1fr minmax(376px, auto) 1fr;
+    grid-column-gap: $base * 3;
+    padding: 20px 0px;
+
+    @media (max-width: $screen-size) {
+        grid-template-rows: repeat(2, auto);
+        grid-template-columns: auto 250px;
+        grid-row-gap: $base * 4;
+    }
+
+    &__box {
+        display: flex;
+        grid-column: 2/3;
+        align-items: center;
+        justify-content: center;
+
+        @media (max-width: $screen-size) {
+            grid-row: 1/3;
+            grid-column: 1/2;
+            align-items: flex-start;
+        }
+    }
+}
+
+.perPage {
+    /** Fake content for empty theme classes (used by atsm). */
+
+    &__box {
+        display: flex;
+        grid-column: 3/4;
+        align-items: center;
+        justify-content: flex-end;
+
+        @media (max-width: $screen-size) {
+            grid-row: 1/2;
+            grid-column: 2/3;
+        }
+    }
+
+    &__label {
+        display: inline-block;
+        margin-right: $base * 4;
+        font-size: $label-font-size;
+        color: $label-color;
+    }
+
+    &__select {
+        flex-shrink: 0;
+    }
+}
+
+._static {
+    /** Fake content for empty theme classes (used by atsm). */
+}
+
+.countPerPageBox {
+    /** Fake content for empty theme classes (used by atsm). */
+}

@@ -1,0 +1,174 @@
+@import '../../theme/vars';
+
+.btn {
+    transition: background-color 0.2s ease-in, transform 0.2s ease-in;
+    padding: 15px;
+    min-width: 100px;
+    border-radius: 4px;
+    font-size: 1.2em;
+    border: 0px;
+    box-shadow: 0px 0px 10px rgba($colorRealBlack, 0.08);
+    display: inline-block;
+    text-align: center;
+
+    &:disabled {
+        opacity: 0.3;
+    }
+
+    &:active {
+        transform: translateY(2px);
+    }
+}
+
+button.btn {
+    appearance: button;
+    cursor: pointer;
+}
+
+a.btn {
+    text-decoration: none;
+}
+
+.group {
+    display: inline-block;
+}
+
+.group .btn {
+    border-radius: 0px;
+    box-shadow: none;
+    &:first-child {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
+    &:last-child {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+}
+
+.condensed {
+    padding: 5px 15px;
+}
+
+.full {
+    width: 100%;
+}
+
+.responsive {
+    width: 100%;
+
+    @include respond_to(tablet_portrait) {
+        width: auto;
+    }
+}
+
+// Button styles:
+
+.link {
+    padding: 5px 10px;
+    color: $colorDarkGrey;
+    background: transparent;
+    min-width: 0;
+    border: 0px;
+    box-shadow: none;
+    font-size: 1em;
+
+    &:hover {
+        color: $colorRealBlack;
+    }
+
+    &:active {
+        color: $colorRealBlack;
+        transform: none;
+    }
+}
+
+.normal {
+    color: $colorBlack;
+    background-color: $colorGrey;
+
+    &:hover,
+    &.active {
+        background-color: $colorDarkGrey;
+        color: $colorWhite;
+    }
+}
+
+.danger {
+    border: 1px solid rgba($colorDarkGrey, 0.2);
+    background-color: $colorDanger;
+    box-shadow: 4px 4px 6px rgba($colorRealBlack, 0.2);
+    color: $colorWhite;
+
+    &:active {
+        background-color: $colorDanger;
+    }
+}
+
+.primary {
+    background-color: $colorPrimary;
+    color: $colorWhite;
+
+    &:hover,
+    &.active {
+        background-color: $colorPrimaryLight;
+    }
+
+    &.outline {
+        background-color: $colorWhite;
+        color: $colorPrimary;
+        border: 1px solid $colorPrimary;
+
+        &:hover,
+        &.active {
+            background-color: $colorPrimary;
+            color: $colorWhite;
+        }
+
+        &.inverse {
+            background: $colorPrimary;
+            color: $colorWhite;
+            border: 1px solid $colorWhite;
+
+            &:hover,
+            .active {
+                background: $colorWhite;
+                color: $colorPrimary;
+            }
+        }
+    }
+}
+
+.alternate {
+    background-color: $colorAlternate;
+    color: $colorWhite;
+
+    &:hover,
+    &.active {
+        background-color: $colorAlternateLight;
+    }
+
+    &.outline {
+        background-color: $colorWhite;
+        color: $colorAlternate;
+        border: 1px solid $colorAlternate;
+
+        &:hover,
+        &.active {
+            background-color: $colorAlternate;
+            color: $colorWhite;
+        }
+    }
+}
+
+.none {
+    color: $colorGrey;
+    border: 0px;
+    box-shadow: none;
+    background-color: transparent;
+    transition: 0.2s color;
+
+    &:hover {
+        color: $colorBlack;
+    }
+}

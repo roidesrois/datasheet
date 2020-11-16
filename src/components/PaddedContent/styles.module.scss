@@ -1,0 +1,9 @@
+@import '../../theme/vars';
+
+.paddedContent {
+    padding: 20px;
+
+    @include respond_to(tablet_portrait) {
+        padding: 50px 50px;
+    }
+}

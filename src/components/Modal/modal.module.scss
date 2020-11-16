@@ -1,0 +1,57 @@
+@import '../../theme/vars';
+
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($colorRealBlack, 0.6);
+    z-index: 200;
+
+    transition: 0.5s background-color;
+
+    &.enter,
+    &.exitActive,
+    &.exitDone {
+        background-color: rgba($colorRealBlack, 0);
+    }
+
+    &.exit,
+    &.enterActive,
+    &.enterDone {
+        background-color: rgba($colorRealBlack, 0.6);
+    }
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.modal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center center;
+}
+
+.modalAnimate {
+    transition: 0.5s opacity, 0.5s transform;
+    &.enter,
+    &.exitActive,
+    &.exitDone {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    &.enterActive,
+    &.enterDone {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

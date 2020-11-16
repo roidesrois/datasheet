@@ -1,0 +1,642 @@
+// import { ECurrencyCode, EOrderByDirection } from "@pashabank/ui-library";
+// import { IError } from "models";
+
+// import { IMessage } from "./services/messageBus";
+
+// export type ApplicationStatus =
+//     {
+//         value: EApplicationStatus.DRAFT;
+//         step: EDraftApplicationFulfillmentStep;
+//     } | {
+//         value: Exclude<EApplicationStatus, EApplicationStatus.DRAFT>;
+//     };
+
+// export function isCompound(x: ApplicationStatus | EApplicationStatus): x is ApplicationStatus {
+//     return Boolean((x as any).value);
+// }
+
+// export function convertToCompound(x: EApplicationStatus | ApplicationStatus): ApplicationStatus {
+//     return isCompound(x) ? x : { value: x, step: null } as any;
+// }
+
+// export type ApplicationStatusUpdateMessage = IMessage<
+//     "APPLICATION_STATUS_UPDATE",
+//     {
+//         assignableStatuses: EApplicationStatus[];
+//         status: ApplicationStatus;
+//     }
+// >;
+
+// export interface IApplicationListFilter {
+//     applicationDateFrom?: string;
+//     applicationDateTo?: string;
+//     applicationStatus?: EApplicationStatus;
+//     assigneeId?: number;
+//     communicationStatus?: ECommunicationStatus;
+//     legalNameOrTin?: string;
+// }
+
+// export interface IGuarantyLetter {
+//     actualAddress: string;
+//     docNumber: string;
+//     issueDate: string;
+// }
+
+// export interface IApplicationListItem {
+//     id: string;
+//     customerId: string;
+//     date: string;
+//     loan: {
+//         amount: number;
+//         currency: ECurrencyCode;
+//     };
+//     company: {
+//         name: string;
+//         phoneNumber: string;
+//         tin: string;
+//     };
+//     status: ApplicationStatus;
+//     communicationStatus: ECommunicationStatus;
+//     ticket: {
+//         deadline: string;
+//         ticketStatus: 'TO_DO' | 'IN_PROGRESS' | 'DONE',
+//         assigneeId: number,
+//         assigneeUsername: string,
+//         assigneeRole: 'CA' | 'CRED_ADMIN' | 'TELESALES'
+//     };
+// }
+
+// export interface IApplicationDetails extends IApplicationListItem {
+//     loan: {
+//         purpose: ELoanPurpose;
+//         commission: number;
+//         source: ELoanSource;
+//     } & IVariableConditions & IApplicationListItem["loan"];
+//     company: {
+//         email: string;
+//         areasOfActivity: {
+//             primary: string;
+//             additional?: string[];
+//         };
+//         hasTurnover: boolean;
+//         hasOtherBankStatements: boolean;
+//         establishmentDate: string;
+//     } & IApplicationListItem["company"];
+//     business: {
+//         founderChanged: boolean;
+//         regions: string[];
+//         allRegionsSupported: boolean;
+//         typeOfSale: ETypeOfSale;
+//         lawsuitClaim: string;
+//     };
+//     guaranteeLetter: IGuarantyLetter;
+//     stakeholders: IStakeholder[];
+//     documents: IDocument[];
+//     assignableStatuses: EApplicationStatus[];
+//     offerAttachable: boolean;
+//     engineStatus: EEngineStatus,
+// }
+
+// export enum EEngineStatus {
+//     APPROVED = 'APPROVED',
+//     MANUAL_VERIFICATION = 'MANUAL_VERIFICATION',
+//     NOT_ASSESSED = 'NOT_ASSESSED',
+//     REJECTED = 'REJECTED',
+// }
+
+// export interface IUser {
+//     id: number;
+//     name: string;
+//     position: string;
+// }
+
+// export interface IDocument {
+//     id?: string;
+//     size?: number;
+//     name?: string;
+//     type: EDocumentType;
+//     mimeType?: string;
+//     status: EDocumentStatus;
+//     comment?: string;
+//     description?: string;
+// }
+
+// export interface IComment {
+//     id: string;
+//     date: string;
+//     text: string;
+//     author: IUser;
+// }
+
+// /** Part of offer conditions which can be varied by CA.  */
+// export interface IVariableConditions {
+//     amount: number;
+//     term: number;
+//     interestRate: number;
+//     commission: number;
+//     gracePeriod: number;
+// }
+
+// export interface IDocumentUploadPayload {
+//     documentInfo: {
+//         description: string;
+//         type: EDocumentType;
+//     };
+//     document: File;
+// }
+
+// export interface IOffer extends IVariableConditions {
+//     status: EOfferStatus;
+// }
+
+// export interface ICommentPostRequest {
+//     text: string;
+//     author: IUser;
+// }
+
+// export type IStakeholder = { roles: EStakeholderRole[]; } & (
+//     {
+//         tin: string;
+//         companyName: string;
+//         incorporatedDate: string;
+//         type: EStakeholderType.LEGAL;
+//     } | {
+//         email: string;
+//         firstName: string
+//         middleName: string;
+//         lastName: string;
+//         phoneNumber: string;
+//         pin: string;
+//         type: EStakeholderType.INDIVIDUAL | EStakeholderType.ENTREPRENEUR;
+//         birthDate: string;
+//     }
+// );
+
+// export interface IUserAdminInfo {
+//     id: number;
+//     username: string;
+//     pincode: string;
+//     firstName: string;
+//     lastName: string;
+//     email: string;
+//     phone: string;
+//     department: string;
+//     position: string;
+//     flexUserName: string;
+//     roles: IUserRole[];
+// }
+
+// export interface IUserRole {
+//     roleId: number;
+//     nameAz: string;
+//     nameEn: string;
+//     nameRu: string;
+//     description: string;
+//     active: boolean;
+// }
+
+// export enum ELoanSource {
+//     GOVERNMENT_PLATFORM = "GOVERNMENT_PLATFORM",
+//     INTERNET_BANK = "INTERNET_BANK",
+// }
+
+// export enum ECommunicationStatus {
+//     CONTACTING_NOW = "CONTACTING_NOW",
+//     DO_NOT_CALL = "DO_NOT_CALL",
+//     TO_CONTACT = "TO_CONTACT",
+//     UNREACHABLE = "UNREACHABLE",
+// }
+
+// export enum EOfferStatus {
+//     DRAFT = "DRAFT",
+//     FINAL = "FINAL",
+// }
+
+// export enum ELoanPurpose {
+//     BUY_EQUIPMENT = "BUY_EQUIPMENT",
+//     BUY_GOODS = "BUY_GOODS",
+//     BUY_PROPERTY = "BUY_PROPERTY",
+//     INCREASE_OF_WORKING_CAPITAL = "INCREASE_OF_WORKING_CAPITAL",
+//     INVESTMENT_PROJECT = "INVESTMENT_PROJECT",
+//     OPERATIONAL_COST_PAYMENT = "OPERATIONAL_COST_PAYMENT",
+//     OTHER = "OTHER",
+//     STATE_AND_OTHER_COST_PAYMENT = "STATE_AND_OTHER_COST_PAYMENT",
+//     WORKING_CAPITAL = "WORKING_CAPITAL"
+// }
+
+// export enum EStakeholderRole {
+//     DIRECTOR = "DIRECTOR",
+//     FOUNDER = "FOUNDER",
+//     ULTIMATE_BENEFICIARY = "ULTIMATE_BENEFICIARY",
+// }
+
+// export enum EStakeholderType {
+//     ENTREPRENEUR = "ENTREPRENEUR",
+//     INDIVIDUAL = "INDIVIDUAL",
+//     LEGAL = "LEGAL",
+// }
+
+// export enum ETypeOfSale {
+//     B2B = "B2B",
+//     B2C = "B2C",
+//     BOTH = "BOTH",
+// }
+
+// export enum EDocumentStatus {
+//     APPROVED = "APPROVED",
+//     MANUAL_INPUT = "MANUAL_INPUT",
+//     PAPER_DOC_DELIVERED = "PAPER_DOC_DELIVERED",
+//     REQUESTED = "REQUESTED",
+//     UPLOADED = "UPLOADED",
+// }
+
+// export enum EDocumentType {
+//     BANK_STATEMENT = "BANK_STATEMENT",
+//     COLLATERAL = "COLLATERAL",
+//     COURT = "COURT",
+//     CUSTOMER_CCR_AGREEMENT = "CUSTOMER_CCR_AGREEMENT",
+//     CUSTOMER_CONTRACT = "CUSTOMER_CONTRACT",
+//     DEPOSIT_AGREEMENT = "DEPOSIT_AGREEMENT",
+//     ESR = "ESR",
+//     GUARANTOR = "GUARANTOR",
+//     ID_CARD = "ID_CARD",
+//     IMMOVABLE_PROPERTY = "IMMOVABLE_PROPERTY",
+//     INVOICES = "INVOICES",
+//     LEASE_AGREEMENT = "LEASE_AGREEMENT",
+//     LOAN_AGREEMENT = "LOAN_AGREEMENT",
+//     MOVABLE_PROPERTY = "MOVABLE_PROPERTY",
+//     REPAYMENT_SCHEDULE = "REPAYMENT_SCHEDULE",
+//     STAKEHOLDER_CCR_AGREEMENT = "STAKEHOLDER_CCR_AGREEMENT",
+//     STAKEHOLDERS_LOAN_AGREEMENT = "STAKEHOLDERS_LOAN_AGREEMENT",
+//     SUPPLIER_CONTRACT = "SUPPLIER_CONTRACT",
+//     TAX_REPORT = "TAX_REPORT",
+//     TAX_RETURN = "TAX_RETURN",
+//     TIN = "TIN",
+// }
+
+// export enum EDraftApplicationFulfillmentStep {
+//     AUTHORIZED_MEMBER = "AUTHORIZED_MEMBER",
+//     BUSINESS_INFO = "BUSINESS_INFO",
+//     COMPANY_INFO = "COMPANY_INFO",
+//     COMPLETED = "COMPLETED",
+//     DOCUMENTS = "DOCUMENTS",
+//     INITIALIZE = "INITIALIZE",
+//     LOAN_INFO = "LOAN_INFO",
+// }
+
+// export enum EApplicationStatus {
+//     ACCOUNT_MAPPING = "ACCOUNT_MAPPING",
+//     CBS_CONTRACT_CREATION = "CBS_CONTRACT_CREATION",
+//     CIB_REDIRECTED = "CIB_REDIRECTED",
+//     COLLATERAL_NEEDED = "COLLATERAL_NEEDED",
+//     COLLATERAL_REGISTRATION = "COLLATERAL_REGISTRATION",
+//     COLLATERAL_VALUATION = "COLLATERAL_VALUATION",
+//     CONTRACT_SIGNED = "CONTRACT_SIGNED",
+//     CONTRACT_SIGNING = "CONTRACT_SIGNING",
+//     DISBURSED = "DISBURSED",
+//     DOC_NEEDED = "DOC_NEEDED",
+//     DOC_RE_REQUESTED = "DOC_RE_REQUESTED",
+//     DRAFT = "DRAFT",
+//     INITIALIZED = "INITIALIZED",
+//     LOAN_OFFERED = "LOAN_OFFERED",
+//     OFFER_ACCEPTED = "OFFER_ACCEPTED",
+//     OFFER_EXPIRED = "OFFER_EXPIRED",
+//     ONBOARDING = "ONBOARDING",
+//     PAPER_DOCS_DELIVERED = "PAPER_DOCS_DELIVERED",
+//     PAPER_DOCUMENT_RE_REQUESTED = "PAPER_DOCUMENT_RE_REQUESTED",
+//     PAPER_DOCUMENT_REVIEW = "PAPER_DOCUMENT_REVIEW",
+//     REJECTED_BY_BANK = "REJECTED_BY_BANK",
+//     REJECTED_BY_CUSTOMER = "REJECTED_BY_CUSTOMER",
+//     REJECTED_BY_GOV = "REJECTED_BY_GOV",
+//     REVIEW = "REVIEW",
+//     SUBMITTED = "SUBMITTED",
+//     TRADITIONAL_SME_REDIRECTED = "TRADITIONAL_SME_REDIRECTED"
+// }
+
+// export interface IApplicationListFilter {
+//     applicationDateFrom?: string;
+//     applicationDateTo?: string;
+//     applicationStatus?: EApplicationStatus;
+//     communicationStatus?: ECommunicationStatus;
+//     legalNameOrTin?: string;
+// }
+
+// export type IAsyncData<T> =
+//     { status: "initial" }
+//     | { status: "loading"; initial: true }
+//     | { status: "loading"; initial: false; data: T }
+//     | { status: "success"; data: T }
+//     | { status: "error"; error: IError };
+
+// export type ActionProp = {
+//     canBeDone: true;
+//     handler: () => void
+// } | {
+//     canBeDone: false
+// };
+
+// export enum EZone {
+//     GREEN = "GREEN",
+//     RED = "RED",
+//     YELLOW = "YELLOW",
+// }
+
+// export interface IAutoVerificationResults {
+//     crisis_rules: {
+//         result: EZone;
+//         cr_inflow_decrease_at_covid: EZone;
+//         cr_inflow_increase_after_covid: EZone;
+//     };
+//     risk_rules: {
+//         result: EZone;
+//         rr_conc_c_flag: EZone;
+//         rr_conc_d_flag: EZone;
+//         rr_days_past_due_flag: EZone;
+//         rr_existing_od_flag: EZone;
+//         rr_licence_avail_flag: EZone;
+//         rr_overdues10_flag: EZone;
+//         rr_sh_days_past_due_flag: EZone;
+//         rr_sh_existing_od_flag: EZone;
+//         rr_sh_overdues10_flag: EZone;
+//     };
+//     scoring: {
+//         balance_to_spend_score: EZone;
+//         conc_c_score: EZone;
+//         conc_d_score: EZone;
+//         days_past_due_score: EZone;
+//         days_since_pd_score: EZone;
+//         debt_to_inflow_score: EZone;
+//         od30_score: EZone;
+//         od_to_debt_score: EZone;
+//         result: EZone;
+//         sh_days_past_due_score: EZone;
+//         sh_days_since_pd_score: EZone;
+//         sh_od30_score: EZone;
+//         sh_od_to_debt_score: EZone;
+//         total_score: number;
+//         total_score_result: EZone;
+//         trend_ma3_balance_score: EZone;
+//         trend_ma3_conc_c_score: EZone;
+//         trend_ma3_ifof_ratio_score: EZone;
+//         trend_ma3_trn_amt_score: EZone;
+//     };
+//     stop_factors: {
+//         result: EZone;
+//         st_acc_arrest_flag: EZone;
+//         st_business_age_flag: EZone;
+//         st_existing_od_flag: EZone;
+//         st_overdues90_flag: EZone;
+//         st_sh_existing_od_flag: EZone;
+//         st_sh_overdues90_flag: EZone;
+//     };
+//     total_result: "APPROVED" | "REJECTED" | "MANUAL_VERIFICATION";
+//     limit_policy?: {
+//         result: EZone;
+//         interest_rate: number;
+//         loan_amount: number;
+//         term: number;
+//         grace_period: number;
+//     };
+//     type: 'draft' | 'saved';
+// }
+
+// export type IAutoVerificationResultsRaw = Omit<IAutoVerificationResults, 'type'>;
+
+// export type ManualVerificationAction =
+//     {
+//         id: number;
+//         name: string;
+//         source: string;
+//         type: "BOOLEAN";
+//     } | {
+//         id: number;
+//         name: string;
+//         source: string;
+//         type: "DROPDOWN";
+//         payload: string[];
+//     } | {
+//         id: number;
+//         name: string;
+//         source: string;
+//         type: "INPUT_DECIMAL";
+//         payload: {
+//             id: string;
+//             name: string;
+//         }[];
+//     } | {
+//         id: number;
+//         name: string;
+//         source: string;
+//         type: "INPUT_DATE";
+//         payload: {
+//             id: string;
+//             name: string;
+//         }[];
+//     };
+
+// export interface IManualVerificationActionAnswers {
+//     manual_verification: {
+//         id: number;
+//         answer: any;
+//     }[];
+// }
+
+// export enum EClientType {
+//     NEW = "NEW",
+//     EXISTING = "EXISTING"
+// }
+
+// export enum EIndustry {
+//     AGRICULTURE_FORESTRY_FISHING_HUNTING = "AGRICULTURE_FORESTRY_FISHING_HUNTING",
+//     BEAUTY_FITNESS = "BEAUTY_FITNESS",
+//     CONSTRUCTION_FURNITURE = "CONSTRUCTION_FURNITURE",
+//     DELIVERY_MOVING_TAXI = "DELIVERY_MOVING_TAXI",
+//     DENTAL = "DENTAL",
+//     EDUCATION_TRAINING = "EDUCATION_TRAINING",
+//     ELECTRONIC_SALES_PRODUCTION = "ELECTRONIC_SALES_PRODUCTION",
+//     FINANCIAL_INSURANCE_SERVICES = "FINANCIAL_INSURANCE_SERVICES",
+//     FOOD = "FOOD",
+//     GAS_OIL_ENERGY = "GAS_OIL_ENERGY",
+//     GOVERNMENT = "GOVERNMENT",
+//     MEDIA_ADS_DESIGN = "MEDIA_ADS_DESIGN",
+//     OTHER = "OTHER",
+//     PHARMA_SALES = "PHARMA_SALES",
+//     PRECIOUS_METALS = "PRECIOUS_METALS",
+//     REAL_ESTATE = "REAL_ESTATE",
+//     RESTAURANT_CAFE_CLUB = "RESTAURANT_CAFE_CLUB",
+//     RETAIL_GROCERY = "RETAIL_GROCERY",
+//     SAFETY_SECURITY_LEGAL_SERVICES = "SAFETY_SECURITY_LEGAL_SERVICES",
+//     TELECOM = "TELECOM",
+//     TEXTILE_CLOTHING_LEATHER_FOOTWEAR = "TEXTILE_CLOTHING_LEATHER_FOOTWEAR",
+//     TRANSPORTATION_LOGISTICS = "TRANSPORTATION_LOGISTICS",
+//     TRAVEL_HOSPITALITY = "TRAVEL_HOSPITALITY",
+//     WAREHOUSING = "WAREHOUSING",
+//     WEB_INTERNET_ECOMM = "WEB_INTERNET_ECOMM",
+//     WHOLESALE_TRADING = "WHOLESALE_TRADING",
+// }
+
+// export enum EProduct {
+//     GOVERNMENT_PLATFORM = "GOVERNMENT_PLATFORM",
+//     INTERNET_BANK = "INTERNET_BANK",
+// }
+
+// export enum EMarketingChannel {
+//     GOV_PLATFORM = "GOV_PLATFORM",
+//     INCOMING_CALL = "INCOMING_CALL",
+//     OTHER = "OTHER",
+//     RM = "RM",
+//     SOCIAL_MEDIA_ADS = "SOCIAL_MEDIA_ADS",
+//     TELESALES = "TELESALES",
+// }
+
+// export enum ERiskZone {
+//     GREEN = "GREEN", // "Potentially, low risk customer",
+//     RED = "RED", // "Potentially, high risk customer",
+//     YELLOW = "YELLOW", // "Potentially, medium risk customer",
+// }
+
+// export enum EContactType {
+//     COLD_SALES = "COLD_SALES",
+//     INGOING_REQUEST_FOR_CALL = "INGOING_REQUEST_FOR_CALL",
+//     OTHER = "OTHER",
+//     PRE_OFFER_SALES = "PRE_OFFER_SALES",
+// }
+
+// export enum EDiscussionStatus {
+//     CANNOT_REACH = "CANNOT_REACH",
+//     DISBURSED = "DISBURSED",
+//     INTERESTED = "INTERESTED",
+//     LOGGED_IN = "LOGGED_IN",
+//     NOT_INTERESTED = "NOT_INTERESTED",
+//     NOT_SURE = "NOT_SURE",
+//     REJECTED_BY_BANK = "REJECTED_BY_BANK",
+//     REJECTED_BY_CLIENT = "REJECTED_BY_CLIENT",
+// }
+
+// export enum ECallStatus {
+//     CALL_LATER = "CALL_LATER",
+//     NEVER_CALL = "NEVER_CALL",
+//     TO_CALL = "TO_CALL",
+// }
+
+// export enum ECommunicationType {
+//     EMAIL = "EMAIL",
+//     SMS = "SMS",
+//     WHATSAPP = "WHATSAPP"
+// }
+
+// export enum ERedirectionStatus {
+//     CIB = "CIB",
+//     NOT_REDIRECTED = "NOT_REDIRECTED",
+//     RETAIL = "RETAIL",
+//     SME_TRADITIONAL = "SME_TRADITIONAL",
+// }
+
+// export interface ILeadCompanyInfo {
+//     clientType: EClientType;
+//     contactName: string;
+//     contactPosition: string;
+//     email: string;
+//     industries: EIndustry[];
+//     marketingChannel: EMarketingChannel;
+//     name: string;
+//     phoneNumbers: string[];
+//     preOfferAmount: string;
+//     preOfferZone: ERiskZone;
+//     product: EProduct;
+//     tin: string;
+// }
+
+// export interface ILeadContactStatusInfo {
+//     answeredCallCount: number;
+//     assigneeUserId: number;
+//     callCount: number | null;
+//     callStatus: ECallStatus;
+//     communicationTypes: { [K in ECommunicationType]: boolean };
+//     contactType: EContactType;
+//     discussionStatus: EDiscussionStatus;
+//     firstContactDate: string;
+//     followUpDate: string;
+//     followUpRequired: boolean;
+//     followUpTime: string;
+//     lastContactDate: string;
+//     nextCallDate: string;
+//     redirectionStatus: ERedirectionStatus;
+// }
+
+// export type ILeadContactStatusInfoRequest = Omit<ILeadContactStatusInfo,
+//     'followUpTime' | 'followUpDate' | 'communicationTypes'> & {
+//         followUpDateTime?: string;
+//         assigneeName: string;
+//         communicationTypes: ECommunicationType[];
+//     }
+
+// export interface ILeadRequestDetails {
+//     id?: number;
+//     company: ILeadCompanyInfo;
+//     contactStatus: ILeadContactStatusInfoRequest;
+//     createdAt?: string;
+// }
+
+// export type ILeadFormState = ILeadCompanyInfo & ILeadContactStatusInfo;
+
+// export interface ILeadListItem {
+//     id: number;
+//     createdAt: string;
+//     tin: number;
+//     name: string;
+//     phoneNumbers: string[];
+//     assigneeUserId: number;
+//     assigneeName: string;
+//     discussionStatus: EDiscussionStatus;
+//     callStatus: ECallStatus;
+// }
+
+// export const DEPENDENCY_TYPES = {
+//     AdminService: Symbol.for('AdminService'),
+//     ApplicationService: Symbol.for('ApplicationService'),
+//     RequestCacheService: Symbol.for('RequestCacheService'),
+//     CommentModalService: Symbol.for('CommentModalService'),
+//     CommentService: Symbol.for('CommentService'),
+//     ConfirmationModalService: Symbol.for('ConfirmationModalService'),
+//     DecisionEngineService: Symbol.for('DecisionEngineService'),
+//     DocumentService: Symbol.for('DocumentService'),
+//     EnvService: Symbol.for('EnvService'),
+//     LeadService: Symbol.for('LeadService'),
+//     MessageBus: Symbol.for('MessageBus'),
+//     ModalService: Symbol.for('ModalService'),
+//     NotificationService: Symbol.for('NotificationService'),
+//     OfferService: Symbol.for('OfferService'),
+//     PermissionService: Symbol.for('PermissionService'),
+// }
+
+// export interface ILeadComment {
+//     authorUserId: number;
+//     authorName: string;
+//     commentText: string;
+//     date?: string;
+// }
+
+// export type CommentAddedToNewLeadMessage = IMessage<'COMMENT_ADDED_TO_NEW_LEAD', ICommentPostRequest>;
+
+// export interface IRejectReasonPostRequest {
+//     rejectReason: string;
+//     comment: ICommentPostRequest;
+// }
+
+// export interface IRejectReason {
+//     keyword: string;
+//     description: string;
+//     title: string;
+// }
+
+// export enum EApplicationListSortBy {
+//     DATE = "DATE",
+//     DEADLINE = "DEADLINE",
+//     AMOUNT = "AMOUNT"
+// }
+
+// export interface IApplicationListSorting {
+//     direction: EOrderByDirection;
+//     by: EApplicationListSortBy;
+// }

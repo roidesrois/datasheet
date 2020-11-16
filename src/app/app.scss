@@ -1,0 +1,80 @@
+@import '../theme/vars';
+* {
+    margin: 0px;
+    padding: 0px;
+    font-size: 1em;
+    font-family: inherit;
+    &,
+    &::before,
+    &::after {
+        box-sizing: border-box;
+    }
+}
+
+*:focus {
+    outline: none;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 10pt;
+    background: $colorBackground;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#root {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+button {
+    cursor: pointer;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.justify-content-end {
+    justify-content: flex-end !important;
+}
+
+.align-items-center {
+    align-items: center !important;
+}
+
+.align-items-end {
+    align-items: flex-end !important;
+}
+
+.justify-content-center {
+    justify-content: center !important;
+}
+
+.justify-content-between {
+    justify-content: space-between !important;
+}
+
+.flex-wrap {
+    flex-wrap: wrap !important;
+}

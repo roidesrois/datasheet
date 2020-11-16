@@ -1,0 +1,619 @@
+// import { ECurrencyCode } from "@pashabank/ui-library";
+
+// import {
+//     ApplicationStatus,
+//     EApplicationStatus,
+//     ECallStatus,
+//     EClientType,
+//     ECommunicationStatus,
+//     ECommunicationType,
+//     EContactType,
+//     EDiscussionStatus,
+//     EDocumentStatus,
+//     EDocumentType,
+//     EDraftApplicationFulfillmentStep,
+//     EIndustry,
+//     ELoanPurpose,
+//     ELoanSource,
+//     EMarketingChannel,
+//     EOfferStatus,
+//     EProduct,
+//     ERedirectionStatus,
+//     ERiskZone,
+//     EStakeholderRole,
+//     EStakeholderType,
+//     ETypeOfSale,
+//     EZone,
+//     IApplicationDetails,
+//     IApplicationListItem,
+//     IAutoVerificationResults,
+//     IComment,
+//     ILeadComment,
+//     ILeadListItem,
+//     ILeadRequestDetails,
+//     IOffer,
+//     IRejectReason,
+//     IUserAdminInfo,
+//     ManualVerificationAction,
+// } from "./models";
+// import { ISMELoanPermissions } from "./services/permissionService";
+
+// function getAllStatuses(): ApplicationStatus[] {
+//     const allStatusesValues = Object.keys(EApplicationStatus).filter((x) => x !== EApplicationStatus.DRAFT) as Exclude<
+//         EApplicationStatus,
+//         EApplicationStatus.DRAFT
+//     >[];
+
+//     return [
+//         {
+//             step: EDraftApplicationFulfillmentStep.AUTHORIZED_MEMBER,
+//             value: EApplicationStatus.DRAFT,
+//         },
+//         ...allStatusesValues.map((value) => ({ value })),
+//     ];
+// }
+
+// // tslint:disable: object-literal-sort-keys
+// export const MOCK_APPLICATION_LIST: IApplicationListItem[] = getAllStatuses().map((status, index) => ({
+//     id: index + 1 + "",
+//     customerId: "00013821",
+//     date: "2020-02-21T23:12:44",
+//     loan: {
+//         amount: 120 + index,
+//         currency: ECurrencyCode.AZN,
+//     },
+//     company: {
+//         name: "Company #" + index,
+//         tin: "K8578/" + (80 + index),
+//         phoneNumber: "+9945566717" + (80 + index),
+//     },
+//     ticket: {
+//         assigneeId: index + 1,
+//         assigneeRole: 'CA',
+//         assigneeUsername: 'mraliyev',
+//         ticketStatus: 'TO_DO',
+//         deadline: index % 2 === 0
+//             ? "2120-03-18T09:20:51"
+//             : "2020-07-17T09:20:51",
+//     },
+//     status: status,
+//     communicationStatus: getRoundRobinApplicationCommunicationStatusById(index + 1 + ""),
+// }));
+
+// export const MOCK_APPLICATION_LIST_AS_CSV = `id,amount,date,company_name,phone,status,tin
+// 1,120.000,25.02.2020,Starbucks,051 437 53 11,draft,K8520/89
+// 2,160.000,31.01.2020,Puma,051 786 53 11,rejected_by_bank,K8520/89`;
+
+// export const MOCK_COMMENTS: IComment[] = [
+//     {
+//         id: "1",
+//         date: "2020-01-31T23:12:44",
+//         text:
+//             "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia vol.",
+//         author: {
+//             id: 1,
+//             name: "Rüfət Məlikov",
+//             position: "Telesales",
+//         },
+//     },
+//     {
+//         id: "2",
+//         date: "2020-03-07T23:12:44",
+//         text:
+//             "Nis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+//         author: {
+//             id: 2,
+//             name: "Fərid Hacıyev",
+//             position: "CA",
+//         },
+//     },
+// ];
+
+// export const MOCK_OFFER: IOffer = {
+//     amount: 105000,
+//     term: 8,
+//     gracePeriod: 2,
+//     interestRate: 16,
+//     status: EOfferStatus.DRAFT,
+//     commission: 2.5,
+// };
+
+// export function GET_MOCK_APPLICATION_DETAILS(id: string): IApplicationDetails {
+//     return {
+//         id,
+//         customerId: "00013821",
+//         status: getRoundRobinApplicationStatusById(id),
+//         date: "2020-02-21T23:12:44",
+//         guaranteeLetter: {
+//             issueDate: "2020-03-08T23:12:44",
+//             docNumber: "112223344",
+//             actualAddress: "Baku AZ"
+//         },
+//         loan: {
+//             amount: 120.0,
+//             currency: ECurrencyCode.AZN,
+//             term: 5,
+//             gracePeriod: 1,
+//             purpose: ELoanPurpose.BUY_PROPERTY,
+//             interestRate: 19,
+//             commission: 2,
+//             source: ELoanSource.GOVERNMENT_PLATFORM,
+//         },
+//         company: {
+//             name: "Alma bağları MMC",
+//             tin: "5657678979",
+//             phoneNumber: "+994556671798",
+//             email: "example@gmail.com",
+//             establishmentDate: "2020-03-08T23:12:44",
+//             areasOfActivity: {
+//                 primary: "Qida",
+//                 additional: ["Ekincilik", "Ekincilik 2"],
+//             },
+//             hasTurnover: true,
+//             hasOtherBankStatements: true,
+//         },
+//         business: {
+//             founderChanged: true,
+//             regions: ["Bakı", "Quba"],
+//             typeOfSale: ETypeOfSale.B2B,
+//             lawsuitClaim: "3000",
+//             allRegionsSupported: true,
+//         },
+//         stakeholders: [
+//             {
+//                 firstName: "Elçin",
+//                 middleName: "Hacıyev",
+//                 roles: [EStakeholderRole.DIRECTOR, EStakeholderRole.FOUNDER],
+//                 phoneNumber: "+994556671798",
+//                 pin: "3drc9ng",
+//                 email: "john.doe@mail.com",
+//                 type: EStakeholderType.INDIVIDUAL,
+//                 lastName: "Müzəffər oğlu",
+//                 birthDate: "2020-03-08T23:12:44",
+//             },
+//             {
+//                 firstName: "Vüqar",
+//                 middleName: "Məmmədov",
+//                 roles: [EStakeholderRole.ULTIMATE_BENEFICIARY],
+//                 phoneNumber: "+994551234567",
+//                 pin: "4dfg9th",
+//                 email: "john.doe@mail.com",
+//                 lastName: "İlkin oğlu",
+//                 type: EStakeholderType.INDIVIDUAL,
+//                 birthDate: "2020-03-08T23:12:44",
+//             },
+//             {
+//                 companyName: "State Grid",
+//                 roles: [EStakeholderRole.ULTIMATE_BENEFICIARY],
+//                 tin: "2896342019",
+//                 incorporatedDate: "2020-03-08T23:12:44",
+//                 type: EStakeholderType.LEGAL,
+//             },
+//         ],
+//         documents: [
+//             {
+//                 id: "1",
+//                 size: 2 ** 10 * 1.2,
+//                 name: "Vergi sənədi.pdf",
+//                 type: EDocumentType.BANK_STATEMENT,
+//                 mimeType: "application/pdf",
+//                 status: EDocumentStatus.UPLOADED,
+//                 comment: "Some short comment.",
+//             },
+//             {
+//                 id: "2",
+//                 size: 2 ** 10 * 50,
+//                 name: "Girov sənədi.pdf",
+//                 type: EDocumentType.COLLATERAL,
+//                 mimeType: "application/pdf",
+//                 status: EDocumentStatus.REQUESTED,
+//                 comment:
+//                     "Consequat voluptate irure adipisicing sint sit Lorem cillum mollit quis commodo officia velit eiusmod. Labore consequat minim laboris occaecat sunt. Laboris ea tempor deserunt non.",
+//             },
+//             {
+//                 id: "3",
+//                 size: null,
+//                 name: null,
+//                 type: EDocumentType.CUSTOMER_CCR_AGREEMENT,
+//                 mimeType: null,
+//                 status: EDocumentStatus.REQUESTED,
+//             },
+//             {
+//                 id: "4",
+//                 size: 2 ** 20 * 17,
+//                 name: "Another sənədi.pdf",
+//                 type: EDocumentType.TAX_REPORT,
+//                 mimeType: "application/pdf",
+//                 status: EDocumentStatus.APPROVED,
+//             },
+//             {
+//                 id: "5",
+//                 size: 2 ** 20 * 17,
+//                 name: "Another sənədi.pdf",
+//                 type: EDocumentType.GUARANTOR,
+//                 mimeType: "application/pdf",
+//                 status: EDocumentStatus.APPROVED,
+//             },
+//             {
+//                 id: "6",
+//                 size: 2 ** 20 * 17,
+//                 name: "Another sənədi.pdf",
+//                 type: EDocumentType.LOAN_AGREEMENT,
+//                 mimeType: "application/pdf",
+//                 status: EDocumentStatus.APPROVED,
+//             },
+//         ],
+//         assignableStatuses: [
+//             EApplicationStatus.DRAFT,
+//             EApplicationStatus.INITIALIZED,
+//             EApplicationStatus.CIB_REDIRECTED,
+//             EApplicationStatus.REJECTED_BY_CUSTOMER,
+//             EApplicationStatus.REJECTED_BY_BANK,
+//             EApplicationStatus.REVIEW,
+//             EApplicationStatus.DOC_NEEDED,
+//             EApplicationStatus.COLLATERAL_NEEDED,
+//             EApplicationStatus.COLLATERAL_VALUATION,
+//             EApplicationStatus.LOAN_OFFERED,
+//             EApplicationStatus.ONBOARDING,
+//             EApplicationStatus.ACCOUNT_MAPPING,
+//             EApplicationStatus.COLLATERAL_REGISTRATION,
+//             EApplicationStatus.OFFER_ACCEPTED,
+//             EApplicationStatus.CONTRACT_SIGNING,
+//             EApplicationStatus.DISBURSED,
+//             EApplicationStatus.SUBMITTED,
+//             EApplicationStatus.PAPER_DOCUMENT_REVIEW,
+//             EApplicationStatus.CBS_CONTRACT_CREATION,
+//             EApplicationStatus.TRADITIONAL_SME_REDIRECTED,
+//         ],
+//         offerAttachable: true,
+//         communicationStatus: getRoundRobinApplicationCommunicationStatusById(id),
+//         ticket: {
+//             assigneeId: 1,
+//             assigneeRole: 'CA',
+//             assigneeUsername: 'mraliyev',
+//             ticketStatus: 'TO_DO',
+//             deadline: "2020-03-18T09:20:51",
+//         },
+//         engineStatus: ['MANUAL_VERIFICATION', 'APPROVED', 'REJECTED', 'NOT_ASSESSED'][Math.floor(Math.random() * 4)] as any,
+//     };
+// }
+
+// export function getRoundRobinApplicationStatusById(id: string): ApplicationStatus {
+//     const allStatuses = getAllStatuses();
+//     return allStatuses[(parseInt(id, 10) - 1) % allStatuses.length];
+// }
+
+// export function getRoundRobinApplicationCommunicationStatusById(id: string): ECommunicationStatus {
+//     const allStatuses = Object.keys(ECommunicationStatus) as ECommunicationStatus[];
+//     return allStatuses[(parseInt(id, 10) - 1) % allStatuses.length];
+// }
+
+// export const MOCK_SME_LOAN_PERMISSIONS: ISMELoanPermissions = {
+//     canAddComment: true,
+//     canAddCommentToLead: true,
+//     canApproveApplication: true,
+//     canApproveDocument: true,
+//     canChangeApplicationStatus: true,
+//     canChangeCommunicationStatus: true,
+//     canCreateOffer: true,
+//     canDeleteDocument: true,
+//     canDownloadApplicationList: true,
+//     canDownloadCcrFiles: true,
+//     canDownloadDocument: true,
+//     canGetLeadComments: true,
+//     canPaperDocumentDelivered: true,
+//     canRejectApplication: true,
+//     canRequestAdditionalDocument: true,
+//     canRerequestDocument: true,
+//     canRouteToCib: true,
+//     canRouteToTraditionalSme: true,
+//     canSendApplicationToEngine: true,
+//     canUpdateOffer: true,
+//     canUploadDocument: true,
+//     canViewApplicationDetails: true,
+//     canViewComments: true,
+//     canViewDecisionEngineUI: true,
+// };
+
+// export function GET_MOCK_AUTO_VERIFICATION_RESULTS(type: IAutoVerificationResults['type']): IAutoVerificationResults {
+//     return {
+//         crisis_rules: {
+//             result: EZone.YELLOW,
+//             cr_inflow_decrease_at_covid: EZone.RED,
+//             cr_inflow_increase_after_covid: EZone.GREEN,
+//         },
+//         risk_rules: {
+//             result: EZone.YELLOW,
+//             rr_conc_c_flag: EZone.GREEN,
+//             rr_conc_d_flag: EZone.GREEN,
+//             rr_days_past_due_flag: EZone.GREEN,
+//             rr_existing_od_flag: EZone.GREEN,
+//             rr_licence_avail_flag: EZone.GREEN,
+//             rr_overdues10_flag: EZone.GREEN,
+//             rr_sh_days_past_due_flag: EZone.RED,
+//             rr_sh_existing_od_flag: EZone.RED,
+//             rr_sh_overdues10_flag: EZone.GREEN,
+//         },
+//         scoring: {
+//             balance_to_spend_score: EZone.RED,
+//             conc_c_score: EZone.GREEN,
+//             conc_d_score: EZone.GREEN,
+//             days_past_due_score: EZone.GREEN,
+//             days_since_pd_score: EZone.GREEN,
+//             debt_to_inflow_score: EZone.GREEN,
+//             od30_score: EZone.GREEN,
+//             od_to_debt_score: EZone.GREEN,
+//             result: EZone.YELLOW,
+//             sh_days_past_due_score: EZone.RED,
+//             sh_days_since_pd_score: EZone.RED,
+//             sh_od30_score: EZone.RED,
+//             sh_od_to_debt_score: EZone.GREEN,
+//             total_score: 0.82,
+//             total_score_result: EZone.GREEN,
+//             trend_ma3_balance_score: EZone.RED,
+//             trend_ma3_conc_c_score: EZone.RED,
+//             trend_ma3_ifof_ratio_score: EZone.RED,
+//             trend_ma3_trn_amt_score: EZone.RED,
+//         },
+//         stop_factors: {
+//             result: EZone.YELLOW,
+//             st_acc_arrest_flag: EZone.GREEN,
+//             st_business_age_flag: EZone.GREEN,
+//             st_existing_od_flag: EZone.GREEN,
+//             st_overdues90_flag: EZone.GREEN,
+//             st_sh_existing_od_flag: EZone.RED,
+//             st_sh_overdues90_flag: EZone.RED,
+//         },
+//         limit_policy: {
+//             interest_rate: 20,
+//             loan_amount: 10000,
+//             term: 12,
+//             grace_period: 6,
+//             result: EZone.GREEN,
+//         },
+//         total_result: "MANUAL_VERIFICATION",
+//         type,
+//     };
+// }
+
+// export const MOCK_MANUAL_VERIFICATION_PARAMETERS: ManualVerificationAction[] = [
+//     {
+//         id: 3,
+//         name: "Check if top-1 buyer is among the buyers in the last 3 months",
+//         source: "Bank Statement",
+//         type: "BOOLEAN",
+//     },
+//     {
+//         id: 4,
+//         name: "Check reasons of top-1 buyer change",
+//         source: "Call w. CEO / Other contact",
+//         type: "DROPDOWN",
+//         payload: [
+//             "Unsatisfactory services or products",
+//             "Supply failure",
+//             "New buyer with better terms",
+//             "Payment delay",
+//             "Buyer's business model change",
+//             "Did not provide clear answer",
+//         ],
+//     },
+//     {
+//         id: 8,
+//         name: "Check operating cash inflow decrease over the past 12 months",
+//         source: "Bank Statement",
+//         type: "INPUT_DECIMAL",
+//         payload: [
+//             {
+//                 id: "x",
+//                 name: "Average monthly cash inflow over the last 6 months availiable for observation",
+//             },
+//             {
+//                 id: "y",
+//                 name: "Average monthly cash inflow over the first 6 months availiable for observation",
+//             },
+//         ],
+//     },
+//     {
+//         id: 1,
+//         name: "Check relationship history with top-1 buyer",
+//         source: "Bank Statement",
+//         type: "INPUT_DATE",
+//         payload: [
+//             {
+//                 id: "x",
+//                 name: "Last availiable transaction date",
+//             },
+//             {
+//                 id: "y",
+//                 name: "First availiable transaction date",
+//             },
+//         ],
+//     },
+// ];
+
+// export function GET_MOCK_USER_ADMIN_INFO(id: number): IUserAdminInfo {
+//     return {
+//         id,
+//         username: "mraliyev" + id,
+//         pincode: "5XZG6A",
+//         firstName: "Mahmud",
+//         lastName: "Aliyev" + id,
+//         email: "Mahmud.Aliyev@pashabank.az",
+//         phone: "+994124965000 (ext.3450)",
+//         department: "Application Development and Support",
+//         position: "Senior Application Developer",
+//         flexUserName: "SEVDA_I",
+//         roles: [
+//             {
+//                 roleId: 1,
+//                 nameAz: "Admin Role",
+//                 nameEn: "Admin Role",
+//                 nameRu: "Admin Role",
+//                 description: "Admin login",
+//                 active: true
+//             },
+//             {
+//                 roleId: 583,
+//                 nameAz: "SME CA",
+//                 nameEn: "SME CA",
+//                 nameRu: "SME CA",
+//                 description: "SME Credit Analytic",
+//                 active: true
+//             },
+//             {
+//                 roleId: 584,
+//                 nameAz: "SME CredAdmin",
+//                 nameEn: "SME CredAdmin",
+//                 nameRu: "SME CredAdmin",
+//                 description: "SME CredAdmin",
+//                 active: true
+//             },
+//             {
+//                 roleId: 585,
+//                 nameAz: "SME Telesales",
+//                 nameEn: "SME Telesales",
+//                 nameRu: "SME Telesales",
+//                 description: "SME Telesales",
+//                 active: true
+//             },
+//             {
+//                 roleId: 726,
+//                 nameAz: "GOV CredAdmin",
+//                 nameEn: "GOV CredAdmin",
+//                 nameRu: "GOV CredAdmin",
+//                 description: "Government Loan Origination CredAdmin",
+//                 active: true
+//             },
+//             {
+//                 roleId: 727,
+//                 nameAz: "GOV CallCenter",
+//                 nameEn: "GOV CallCenter",
+//                 nameRu: "GOV CallCenter",
+//                 description: "Government Loan Origination CallCenter",
+//                 active: true
+//             },
+//             {
+//                 roleId: 728,
+//                 nameAz: "GOV Sales",
+//                 nameEn: "GOV Sales",
+//                 nameRu: "GOV Sales",
+//                 description: "Government Loan Origination Sales",
+//                 active: true
+//             }
+//         ],
+//     };
+// }
+
+// export const MOCK_LEADS_LIST: ILeadListItem[] = [
+//     {
+//         id: 1,
+//         createdAt: "2020-07-27T19:39:50.54",
+//         tin: 1,
+//         name: "MattePhysics LTD",
+//         phoneNumbers: [
+//             "995112223344",
+//             "995112223345"
+//         ],
+//         assigneeUserId: 123,
+//         assigneeName: "Foo Bar",
+//         discussionStatus: EDiscussionStatus.INTERESTED,
+//         callStatus: ECallStatus.TO_CALL
+//     },
+//     {
+//         id: 1,
+//         createdAt: "2020-07-27T19:39:50.54",
+//         tin: 1,
+//         name: "MattePhysics LTD 2",
+//         phoneNumbers: [
+//             "995112223346",
+//             "995112223347"
+//         ],
+//         assigneeUserId: 123,
+//         assigneeName: "Foo Bar 2",
+//         discussionStatus: EDiscussionStatus.NOT_SURE,
+//         callStatus: ECallStatus.NEVER_CALL
+//     },
+// ];
+
+// export function GET_MOCK_ASSIGNEE_LIST(qty: number, role: string): IUserAdminInfo[] {
+//     return [...Array(qty)].map((_, i) => {
+//         return {
+//             id: i,
+//             username: "mraliyev",
+//             pincode: "5XZG6A",
+//             firstName: "Mahmud",
+//             lastName: `Aliyev ${i} ${role}`,
+//             email: "Mahmud.Aliyev@pashabank.az",
+//             phone: "+994124965000 (ext.3450)",
+//             department: "Application Development and Support",
+//             position: "Senior Application Developer",
+//             flexUserName: "SEVDA_I",
+//             roles: [
+//                 {
+//                     roleId: 1,
+//                     nameAz: "Admin Role",
+//                     nameEn: "Admin Role",
+//                     nameRu: "Admin Role",
+//                     description: "Admin login",
+//                     active: true
+//                 }
+//             ]
+//         }
+//     })
+// }
+
+// export const MOCK_LEAD_DETAILS: ILeadRequestDetails = {
+//     id: 1,
+//     company: {
+//         name: 'ADCO',
+//         tin: '1223',
+//         email: 'empty',
+//         phoneNumbers: ['1111', '2222'],
+//         clientType: EClientType.EXISTING,
+//         contactName: 'Alex',
+//         contactPosition: 'CEO',
+//         industries: [EIndustry.AGRICULTURE_FORESTRY_FISHING_HUNTING],
+//         product: EProduct.GOVERNMENT_PLATFORM,
+//         marketingChannel: EMarketingChannel.OTHER,
+//         preOfferAmount: '12345',
+//         preOfferZone: ERiskZone.GREEN,
+//     },
+//     contactStatus: {
+//         callCount: 10,
+//         answeredCallCount: 5,
+//         firstContactDate: '2020-12-25',
+//         lastContactDate: '2020-12-14',
+//         contactType: EContactType.INGOING_REQUEST_FOR_CALL,
+//         discussionStatus: EDiscussionStatus.CANNOT_REACH,
+//         nextCallDate: '2020-12-12',
+//         callStatus: ECallStatus.CALL_LATER,
+//         communicationTypes: [ECommunicationType.EMAIL, ECommunicationType.WHATSAPP],
+//         assigneeUserId: 1,
+//         assigneeName: "Foo Bar",
+//         redirectionStatus: ERedirectionStatus.RETAIL,
+//         followUpRequired: true,
+//         followUpDateTime: "2020-07-22T07:43:33.998525"
+//     }
+// }
+
+// export function GET_MOCK_LEAD_COMMENTS(qty: number): ILeadComment[] {
+//     return [...Array(qty)].map((_, i) => {
+//         return {
+//             leadId: "1",
+//             authorUserId: i,
+//             authorName: `Mahmud Aliyev ${i}`,
+//             commentText: `Comment ${i}`,
+//             date: `2019-12-27T12:10:${i}`
+//         }
+//     })
+// }
+
+// export function GET_REJECT_REASONS(qty: number): IRejectReason[] {
+//     return [...Array(qty)].map((_, i) => {
+//         return {
+//             keyword: `90_DAYS_OVERDUE ${i}`,
+//             description: "reject reason description in Azerbaijani",
+//             title: `90+ overdue ${i}`
+//         }
+//     })
+// }

@@ -1,0 +1,18 @@
+{
+    "extends": ["stylelint-config-standard", "stylelint-config-recess-order", "stylelint-config-prettier"],
+    "rules": {
+        "block-no-empty": null,
+        "no-descending-specificity": null,
+        "order/properties-order": null,
+        "indentation": 4,
+        "string-quotes": "double",
+        "number-leading-zero": "always",
+        "unit-whitelist": ["px", "em", "vh", "vw", "%", "deg", "s", "ms"],
+        "at-rule-no-unknown": [
+            true,
+            {
+                "ignoreAtRules": ["include", "mixin"]
+            }
+        ]
+    }
+}

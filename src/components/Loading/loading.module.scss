@@ -1,0 +1,88 @@
+.loading {
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+.indicatorWrapper {
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s;
+    top: 15%;
+}
+
+.visible {
+    display: block;
+
+    .indicatorWrapper {
+        opacity: 1;
+    }
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.absoluteBottom,
+.absoluteCenter,
+.absoluteTop {
+    position: absolute;
+    width: 100%;
+
+    .indicator {
+        position: absolute;
+        left: 50%;
+    }
+}
+
+.absoluteCenter,
+.absoluteTop,
+.fixed {
+    .indicator {
+        transform: translate(-50%, -50%);
+    }
+}
+
+.absoluteTop {
+    .indicator {
+        top: 0;
+    }
+}
+
+.absoluteBottom {
+    .indicator {
+        bottom: 0;
+        transform: translate(-50%, 50%);
+    }
+}
+
+.absoluteCenter {
+    .indicator {
+        top: 50%;
+    }
+}
+
+.fixed {
+    position: absolute;
+    left: 50%;
+
+    .indicator {
+        position: fixed;
+        top: 50%;
+    }
+}
+
+.displayBlock {
+    display: block;
+}
+.displayInline {
+    display: inline-block;
+}

@@ -1,0 +1,29 @@
+@import '../../theme/vars';
+
+.breadcrumbs {
+    padding: 20px 0;
+    margin-left: 5px;
+
+    ul {
+        list-style: none;
+
+        li {
+            font-size: 1.125;
+            display: inline;
+
+            a {
+                color: $colorDarkGrey;
+                text-decoration: none;
+
+                &:hover,
+                &:active {
+                    color: $colorAlternate;
+                }
+
+                .icon {
+                    padding: 0 10px;
+                }
+            }
+        }
+    }
+}
