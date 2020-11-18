@@ -13,6 +13,8 @@ const fetchEmployees = async () => {
     return Promise.resolve(MOCK_EMPLOYEES).then(delay(500));
 };
 
+const cloneData = JSON.parse(JSON.stringify(MOCK_EMPLOYEES.data));
+
 const Employees = () => {
     const [page, setPageNumber] = useState(0);
     const [count, setPageCount] = useState(10);
@@ -23,13 +25,13 @@ const Employees = () => {
     const [selected, setSelected] = useState([]);
     const [deleted, setDeleted] = useState([]);
     const [employees, setEmployees] = useState({
-        data: JSON.parse(JSON.stringify(MOCK_EMPLOYEES.data)),
+        data: cloneData,
         pagination: MOCK_EMPLOYEES.pagination,
     });
 
     const { filteredData, loading } = useSearch({
         searchVal,
-        retrieve: MOCK_EMPLOYEES.data,
+        retrieve: cloneData,
     });
 
     useEffect(() => {
@@ -42,45 +44,6 @@ const Employees = () => {
             },
             data: filteredData,
         });
-
-        // setEmployees(prevState => ({
-        //     ...prevState,
-        //     data: filteredData,
-        // }));
-    }, [filteredData]);
-
-    useEffect(() => {
-        setEmployees({
-            pagination: {
-                total: filteredData.length,
-                pages: Number(filteredData.length / employees.pagination.limit),
-                page: 1,
-                limit: 10,
-            },
-            data: filteredData,
-        });
-
-        // setEmployees(prevState => ({
-        //     ...prevState,
-        //     data: filteredData,
-        // }));
-    }, [filteredData]);
-
-    useEffect(() => {
-        setEmployees({
-            pagination: {
-                total: filteredData.length,
-                pages: Number(filteredData.length / employees.pagination.limit),
-                page: 1,
-                limit: 10,
-            },
-            data: filteredData,
-        });
-
-        // setEmployees(prevState => ({
-        //     ...prevState,
-        //     data: filteredData,
-        // }));
     }, [filteredData]);
 
     const handleEmployeesTable = evt => {
@@ -147,7 +110,10 @@ const Employees = () => {
     };
 
     const handleResetData = () => {
-        setEmployees(MOCK_EMPLOYEES);
+        setEmployees({
+            data: JSON.parse(JSON.stringify(MOCK_EMPLOYEES.data)),
+            pagination: MOCK_EMPLOYEES.pagination,
+        });
         setUpdated([]);
         setSelected([]);
         setDeleted([]);
