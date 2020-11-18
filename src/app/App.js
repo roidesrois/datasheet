@@ -1,11 +1,12 @@
-import React, { Suspense, lazy, Component, Fragment } from 'react';
-import { Helmet } from 'react-helmet';
-import { Switch, Route } from 'react-router-dom';
-import { Spinner } from '../components/Spinner';
-import './icons';
-import './yup';
+import React, { Suspense, lazy, Component, Fragment } from "react";
+import { Helmet } from "react-helmet";
+import { Switch, Route } from "react-router-dom";
 
-import './app.scss';
+import { Spinner } from "../components/Spinner";
+import "./icons";
+import "./yup";
+
+import "./app.scss";
 
 const loadPage = page => props => {
     const Component = lazy(() => import(`../pages/${page}`));
@@ -20,7 +21,7 @@ class App extends Component {
                 <main role="main">
                     <Suspense fallback={<Spinner />}>
                         <Switch>
-                            <Route component={loadPage('employees/Employees')} />
+                            <Route component={loadPage("employees/Employees")} />
                         </Switch>
                     </Suspense>
                 </main>

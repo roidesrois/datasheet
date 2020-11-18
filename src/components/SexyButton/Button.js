@@ -1,8 +1,9 @@
-import React from 'react';
-import classnames from 'classnames';
-import { string, bool, node } from 'prop-types';
+import React from "react";
+import classnames from "classnames";
+import { string, bool, node } from "prop-types";
 
-import styles from './button.module.scss';
+import styles from "./button.module.scss";
+import { faSleigh } from "@fortawesome/free-solid-svg-icons";
 
 const Button = ({
     feel,
@@ -13,6 +14,7 @@ const Button = ({
     responsive,
     full,
     inverse,
+    disabled,
     as,
     children,
     ...props
@@ -24,13 +26,17 @@ const Button = ({
             [styles.condensed]: condensed,
             [styles.active]: active,
             [styles.outline]: outline,
-            [styles.inverse]: inverse
+            [styles.inverse]: inverse,
         }),
-        ...props
+        ...props,
     };
 
-    if (as === 'button') {
-        return <button {...elemProps}>{children}</button>;
+    if (as === "button") {
+        return (
+            <button {...elemProps} disabled={disabled}>
+                {children}
+            </button>
+        );
     }
 
     return React.createElement(as, elemProps, children);
@@ -41,25 +47,27 @@ Button.propTypes = {
     type: string,
     children: node.isRequired,
     condensed: bool,
+    disabled: bool,
     active: bool,
     outline: bool,
     responsive: bool,
     full: bool,
     inverse: bool,
-    className: string
+    className: string,
 };
 
 Button.defaultProps = {
-    feel: 'primary',
-    type: 'button',
-    as: 'button',
+    feel: "primary",
+    type: "button",
+    as: "button",
     condensed: false,
     responsive: false,
     inverse: false,
+    disabled: false,
     active: false,
     outline: false,
     full: false,
-    className: ''
+    className: "",
 };
 
 export default Button;

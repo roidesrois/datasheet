@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { arrayOf, string, object, shape, func, bool } from 'prop-types';
+import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { arrayOf, string, object, shape, func, bool } from "prop-types";
 
-import { VisiblyHidden } from '../VisiblyHidden';
-
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
 
 export default class Datasheet extends Component {
     renderContent() {
@@ -14,7 +12,6 @@ export default class Datasheet extends Component {
                 <tr className={styles.loadingRow}>
                     <td colSpan={columns.length}>
                         <FontAwesomeIcon icon="circle-notch" spin />
-                        <VisiblyHidden>Loading Content</VisiblyHidden>
                     </td>
                 </tr>
             );
@@ -76,14 +73,14 @@ Datasheet.propTypes = {
     data: arrayOf(object),
     rowClassFn: func,
     isLoading: bool,
-    showHeader: bool
+    showHeader: bool,
 };
 
 Datasheet.defaultProps = {
     showHeader: true,
     columns: [],
-    dataKeyName: 'id',
+    dataKeyName: "id",
     data: [],
     rowClassFn: null,
-    bool: false
+    bool: false,
 };

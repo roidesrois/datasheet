@@ -1,8 +1,8 @@
-@import '../../theme/vars';
+@import "../../theme/vars";
 
 .btn {
     transition: background-color 0.2s ease-in, transform 0.2s ease-in;
-    padding: 15px;
+    padding: 10px;
     min-width: 100px;
     border-radius: 4px;
     font-size: 1.2em;

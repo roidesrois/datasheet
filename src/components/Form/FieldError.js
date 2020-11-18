@@ -1,13 +1,9 @@
-import React, { Component } from 'react';
-import { string } from 'prop-types';
+import React, { Component } from "react";
+import { string } from "prop-types";
 
-import FormContext from './FormContext';
-
-import styles from './form.module.scss';
+import styles from "./form.module.scss";
 
 export default class FieldError extends Component {
-    static contextType = FormContext;
-
     render() {
         return this.context.errors[this.props.name] ? (
             <ul className={styles.fieldError}>
@@ -20,5 +16,5 @@ export default class FieldError extends Component {
 }
 
 FieldError.propTypes = {
-    name: string.isRequired
+    name: string.isRequired,
 };

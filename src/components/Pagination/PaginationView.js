@@ -1,41 +1,38 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import classnames from 'classnames';
-import { Button } from '../SexyButton';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styles from './pagination.module.scss';
-import { func, number } from 'prop-types';
+import classnames from "classnames";
+import { Button } from "../SexyButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styles from "./pagination.module.scss";
+import { func, number } from "prop-types";
 
 export class PaginationView extends Component {
     getDataTestId = pageNumber => {
         const { totalPagesCount, currentPage } = this.props;
-        let pageLabel = '';
+        let pageLabel = "";
 
         // eslint-disable-next-line default-case
         switch (pageNumber) {
             case 1:
-                pageLabel = 'first';
+                pageLabel = "first";
                 break;
             case totalPagesCount:
-                pageLabel = 'last';
+                pageLabel = "last";
                 break;
             case currentPage - 1:
-                pageLabel = 'prev';
+                pageLabel = "prev";
                 break;
             case currentPage + 1:
-                pageLabel = 'next';
+                pageLabel = "next";
                 break;
         }
 
-        return pageLabel ? `pagination-${pageLabel}-item-button` : '';
+        return pageLabel ? `pagination-${pageLabel}-item-button` : "";
     };
 
     page = pageNumber =>
         pageNumber === this.props.currentPage ? (
-            <span
-                key={pageNumber}
-                className={classnames(styles.pageNumber, styles.active, styles._static)}
-            >
+            <span key={pageNumber} className={classnames(styles.pageNumber, styles.active, styles._static)}>
                 {pageNumber}
             </span>
         ) : (
@@ -52,10 +49,7 @@ export class PaginationView extends Component {
         );
 
     dots = positionNumber => (
-        <span
-            key={`dots-${positionNumber}`}
-            className={classnames(styles.pageNumber, styles._static)}
-        >
+        <span key={`dots-${positionNumber}`} className={classnames(styles.pageNumber, styles._static)}>
             ...
         </span>
     );
@@ -135,6 +129,7 @@ export class PaginationView extends Component {
                         inverse
                         feel="normal"
                         active={currentPage !== 1}
+                        disabled={currentPage === 1}
                         onClick={() => onPageChange(prevPage)}
                     >
                         <FontAwesomeIcon icon="angle-left" />
@@ -146,6 +141,7 @@ export class PaginationView extends Component {
                         feel="normal"
                         inverse
                         active={currentPage !== totalPagesCount}
+                        disabled={currentPage === totalPagesCount}
                         onClick={() => onPageChange(nextPage)}
                     >
                         <FontAwesomeIcon icon="angle-right" />
@@ -159,9 +155,9 @@ export class PaginationView extends Component {
 PaginationView.propTypes = {
     currentPage: number,
     totalPagesCount: number,
-    onPageChange: func
+    onPageChange: func,
 };
 
 PaginationView.defaultProps = {
-    currentPage: 0
+    currentPage: 0,
 };

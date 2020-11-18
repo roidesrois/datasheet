@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
-import { string, arrayOf, oneOfType, number, shape, bool } from 'prop-types';
+import React, { Component } from "react";
+import { string, arrayOf, oneOfType, number, shape, bool } from "prop-types";
 
-import styles from './form.module.scss';
-import FormContext from './FormContext';
-import FieldError from './FieldError';
-import classnames from 'classnames';
-
-import { VisiblyHidden } from '../VisiblyHidden';
+import styles from "./form.module.scss";
+import FormContext from "./FormContext";
+import FieldError from "./FieldError";
+import classnames from "classnames";
 
 export default class SelectBox extends Component {
     static contextType = FormContext;
@@ -38,22 +36,16 @@ export default class SelectBox extends Component {
         return (
             <div
                 className={classnames(styles.inputRow, {
-                    [styles.hasErrors]: name in this.context.errors
+                    [styles.hasErrors]: name in this.context.errors,
                 })}
             >
-                {hideLabel ? (
-                    <VisiblyHidden as="label" htmlFor={name}>
-                        {label}
-                    </VisiblyHidden>
-                ) : (
-                    <label htmlFor={name}>{label}</label>
-                )}
+                {!hideLabel && <label htmlFor={name}>{label}</label>}
                 <div className={styles.selectBox}>
                     <select
                         name={name}
                         onChange={this.handleChange}
                         className={classnames({
-                            [styles.placeholder]: !this.context.data[name]
+                            [styles.placeholder]: !this.context.data[name],
                         })}
                         defaultValue={this.context.data[name]}
                     >
@@ -85,9 +77,9 @@ SelectBox.propTypes = {
     options: arrayOf(
         shape({
             value: oneOfType([string, number]).isRequired,
-            label: string.isRequired
-        })
-    )
+            label: string.isRequired,
+        }),
+    ),
 };
 
 SelectBox.defaultProps = {
@@ -95,5 +87,5 @@ SelectBox.defaultProps = {
     options: [],
     hideLabel: false,
     showEmpty: true,
-    showErrors: true
+    showErrors: true,
 };

@@ -1,45 +1,24 @@
-import React, { Component } from 'react';
-import { string, arrayOf, bool } from 'prop-types';
-import classnames from 'classnames';
+import React, { Component } from "react";
+import { string, arrayOf, bool } from "prop-types";
+import classnames from "classnames";
 
-import styles from './form.module.scss';
-import FormContext from './FormContext';
-import FieldError from './FieldError';
-
-import { VisiblyHidden } from '../VisiblyHidden';
+import styles from "./form.module.scss";
 
 export default class TextInput extends Component {
-    static contextType = FormContext;
-
     render() {
-        const { type, name, label, placeholder, hideLabel, showErrors, disabled } = this.props;
+        const { type, name, label, placeholder, hideLabel, showErrors, disabled, value, id } = this.props;
         return (
-            <div
-                className={classnames(styles.inputRow, {
-                    [styles.hasErrors]: name in this.context.errors
-                })}
-            >
-                {hideLabel ? (
-                    <VisiblyHidden as="label" htmlFor={name}>
-                        {label}
-                    </VisiblyHidden>
-                ) : (
-                    <label htmlFor={name}>{label}</label>
-                )}
+            <div className={classnames(styles.inputRow)}>
+                {!hideLabel && <label htmlFor={name}>{label}</label>}
                 <input
                     type={type}
                     name={name}
-                    id={name}
+                    id={id}
+                    value={value}
                     placeholder={placeholder}
-                    defaultValue={this.context.data[name]}
-                    onChange={this.context.inputChange(name)}
+                    onChange={this.props.onChange}
                     disabled={disabled}
                 />
-                {showErrors && (
-                    <div className={styles.error}>
-                        <FieldError name={name} />
-                    </div>
-                )}
             </div>
         );
     }
@@ -48,19 +27,19 @@ export default class TextInput extends Component {
 TextInput.propTypes = {
     type: string,
     name: string.isRequired,
-    label: string.isRequired,
+    label: string,
     showErrors: bool,
-    placeholder: string.isRequired,
+    placeholder: string,
     errors: arrayOf(string.isRequired),
     value: string,
     hideLabel: bool,
-    disabled: bool
+    disabled: bool,
 };
 
 TextInput.defaultProps = {
-    type: 'text',
+    type: "text",
     errors: [],
     showErrors: true,
     hideLabel: false,
-    disabled: false
+    disabled: false,
 };

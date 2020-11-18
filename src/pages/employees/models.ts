@@ -1,7 +1,5 @@
 export interface IUserAdminInfo {
-    meta: {
-        pagination: IPagination;
-    };
+    pagination: IPagination;
     data: IEmployee[];
 }
 

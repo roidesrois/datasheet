@@ -1,10 +1,10 @@
-import * as React from 'react';
+import * as React from "react";
 
-import classnames from 'classnames';
-import { string, number, arrayOf, func } from 'prop-types';
-import styles from './pagination.module.scss';
+import classnames from "classnames";
+import { string, number, arrayOf, func } from "prop-types";
+import styles from "./pagination.module.scss";
 
-import { SelectBox } from '../Form';
+import { SelectBox } from "../Form";
 
 /** Toolbar to configure `Pagination` component. For example, max items count displayed per one page. */
 
@@ -13,13 +13,10 @@ export const PaginationConfigToolbar = ({
     datatestid,
     itemsCountPerPageLabel,
     itemsCountPerPageOptions,
-    onItemsCountPerPageChange
+    onItemsCountPerPageChange,
 }) => {
     return (
-        <div
-            className={classnames(styles.perPage, styles.perPage__box, className)}
-            data-test-id={datatestid}
-        >
+        <div className={classnames(styles.perPage, styles.perPage__box, className)} data-test-id={datatestid}>
             <span className={styles.perPage__label}>{itemsCountPerPageLabel}</span>
             <span className={styles.perPage__select}>
                 <SelectBox
@@ -32,7 +29,7 @@ export const PaginationConfigToolbar = ({
                     onChange={onItemsCountPerPageChange}
                     options={itemsCountPerPageOptions.map(item => ({
                         value: item,
-                        label: String(item)
+                        label: String(item),
                     }))}
                 />
             </span>
@@ -44,5 +41,5 @@ PaginationConfigToolbar.propTypes = {
     itemsCountPerPage: number,
     itemsCountPerPageOptions: arrayOf(number),
     itemsCountPerPageLabel: string,
-    onItemsCountPerPageChange: func
+    onItemsCountPerPageChange: func,
 };
