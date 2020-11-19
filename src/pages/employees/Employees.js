@@ -73,7 +73,7 @@ const Employees = () => {
             return employee;
         });
 
-        setEmployees(prevState => ({
+        setBaseData(prevState => ({
             ...prevState,
             data: updatedEmployees,
         }));
