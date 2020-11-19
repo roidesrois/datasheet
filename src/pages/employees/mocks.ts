@@ -11,7 +11,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 1,
             name: "Elnur",
-            surname: "Dure314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "2000-06-05",
             position: "Backend Developer",
             phoneNumber: "+994502345598",
@@ -19,7 +19,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 2,
             name: "Orkhan",
-            surname: "vvsd33@gmail.com",
+            surname: "Salimov",
             dateOfBirth: "1996-09-05",
             position: "Frontend Developer",
             phoneNumber: "+994502345598",
@@ -27,7 +27,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 3,
             name: "Seymur",
-            surname: "br314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "1995-11-11",
             position: "DevOps",
             phoneNumber: "+994502345598",
@@ -35,7 +35,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 4,
             name: "Maryam",
-            surname: "rar314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "1997-01-11",
             position: "Designer",
             phoneNumber: "+994502005090",
@@ -43,7 +43,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 5,
             name: "Vusal",
-            surname: "roidesr@gmail.com",
+            surname: "Huseynli",
             dateOfBirth: "1990-11-11",
             position: "Tester",
             phoneNumber: "+994502345598",
@@ -51,7 +51,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 6,
             name: "Elnur",
-            surname: "erre0024@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "2008-11-11",
             position: "Backend Developer",
             phoneNumber: "+994502345598",
@@ -59,7 +59,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 7,
             name: "Farxad",
-            surname: "asre314@gmail.com",
+            surname: "Huseynli",
             dateOfBirth: "2008-10-07",
             position: "Manager",
             phoneNumber: "+994502345598",
@@ -67,7 +67,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 8,
             name: "Elnara",
-            surname: "Dure314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "2008-11-09",
             position: "BI",
             phoneNumber: "+994502345598",
@@ -75,7 +75,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 9,
             name: "Aytan",
-            surname: "kare314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "1998-02-11",
             position: "Tester",
             phoneNumber: "+994502345598",
@@ -83,7 +83,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 10,
             name: "Jeyhun",
-            surname: "Dure314@gmail.com",
+            surname: "Huseynli",
             dateOfBirth: "2008-11-11",
             position: "Backend Developer",
             phoneNumber: "+994502345598",
@@ -91,7 +91,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 11,
             name: "Ruslan",
-            surname: "abe30@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "2008-11-11",
             position: "Backend Developer",
             phoneNumber: "+994502345598",
@@ -99,7 +99,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 12,
             name: "Elnur",
-            surname: "Dde31@gmail.com",
+            surname: "Huseynli",
             dateOfBirth: "2008-11-11",
             position: "Backend Developer",
             phoneNumber: "+994502345598",
@@ -107,7 +107,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 13,
             name: "Aytan",
-            surname: "kare314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "1998-02-11",
             position: "Tester",
             phoneNumber: "+994502345598",
@@ -115,7 +115,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 14,
             name: "Elnur",
-            surname: "Dure314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "2008-11-11",
             position: "Backend Developer",
             phoneNumber: "+994502345598",
@@ -123,7 +123,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 15,
             name: "Elnara",
-            surname: "Dure314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "2008-11-09",
             position: "BI",
             phoneNumber: "+994502345598",
@@ -131,7 +131,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 16,
             name: "Vusal",
-            surname: "roidesr@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "1990-11-11",
             position: "Tester",
             phoneNumber: "+994502345598",
@@ -139,7 +139,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 17,
             name: "Seymur",
-            surname: "br314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "1995-11-11",
             position: "DevOps",
             phoneNumber: "+994502345598",
@@ -147,7 +147,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 18,
             name: "Aytan",
-            surname: "kare314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "1998-02-11",
             position: "Tester",
             phoneNumber: "+994502345598",
@@ -155,7 +155,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 19,
             name: "Elnur",
-            surname: "Dure314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "2008-11-11",
             position: "Backend Developer",
             phoneNumber: "+994502345598",
@@ -163,7 +163,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 20,
             name: "Elnur",
-            surname: "Dure314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "2008-11-11",
             position: "Backend Developer",
             phoneNumber: "+994502345598",
@@ -171,7 +171,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 21,
             name: "Elnur",
-            surname: "Dure314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "2008-11-11",
             position: "Backend Developer",
             phoneNumber: "+994502345598",
@@ -179,7 +179,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 22,
             name: "Elnur",
-            surname: "Dure314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "2008-11-11",
             position: "Backend Developer",
             phoneNumber: "+994502345598",
@@ -187,7 +187,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 23,
             name: "Elnara",
-            surname: "Dure314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "2008-11-09",
             position: "BI",
             phoneNumber: "+994502345598",
@@ -195,7 +195,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 24,
             name: "Aytan",
-            surname: "kare314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "1998-02-11",
             position: "Tester",
             phoneNumber: "+994502345598",
@@ -203,7 +203,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 25,
             name: "Vusal",
-            surname: "roidesr@gmail.com",
+            surname: "Huseynli",
             dateOfBirth: "1990-11-11",
             position: "Tester",
             phoneNumber: "+994502345598",
@@ -211,7 +211,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 26,
             name: "Orkhan",
-            surname: "vvsd33@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "1996-09-05",
             position: "Frontend Developer",
             phoneNumber: "+994502345598",
@@ -219,7 +219,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 27,
             name: "Elnur",
-            surname: "Dure314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "2008-11-11",
             position: "Backend Developer",
             phoneNumber: "+994502345598",
@@ -227,7 +227,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 28,
             name: "Elnara",
-            surname: "Dure314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "2008-11-09",
             position: "BI",
             phoneNumber: "+994502345598",
@@ -235,7 +235,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 29,
             name: "Aytan",
-            surname: "kare314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "1998-02-11",
             position: "Tester",
             phoneNumber: "+994502345598",
@@ -243,7 +243,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 30,
             name: "Seymur",
-            surname: "br314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "1995-11-11",
             position: "DevOps",
             phoneNumber: "+994502345598",
@@ -251,7 +251,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 31,
             name: "Elnur",
-            surname: "Dure314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "2008-11-11",
             position: "Backend Developer",
             phoneNumber: "+994502345598",
@@ -259,7 +259,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 32,
             name: "Elnur",
-            surname: "Dure314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "2008-11-11",
             position: "Backend Developer",
             phoneNumber: "+994502345598",
@@ -267,7 +267,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 33,
             name: "Vusal",
-            surname: "roidesr@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "1990-11-11",
             position: "Tester",
             phoneNumber: "+994502345598",
@@ -275,7 +275,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 34,
             name: "Aytan",
-            surname: "kare314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "1998-02-11",
             position: "Tester",
             phoneNumber: "+994502345598",
@@ -283,7 +283,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 35,
             name: "Elnur",
-            surname: "Dure314@gmail.com",
+            surname: "Huseynli",
             dateOfBirth: "2008-11-11",
             position: "Backend Developer",
             phoneNumber: "+994502345598",
@@ -291,7 +291,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 36,
             name: "Elnur",
-            surname: "Dure314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "2008-11-11",
             position: "Backend Developer",
             phoneNumber: "+994502345598",
@@ -299,7 +299,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 37,
             name: "Elnara",
-            surname: "Dure314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "2008-11-09",
             position: "BI",
             phoneNumber: "+994502345598",
@@ -307,7 +307,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 38,
             name: "Elnur",
-            surname: "Dure314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "2008-11-11",
             position: "Backend Developer",
             phoneNumber: "+994502345598",
@@ -315,7 +315,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 39,
             name: "Orkhan",
-            surname: "vvsd33@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "1996-09-05",
             position: "Frontend Developer",
             phoneNumber: "+994502345598",
@@ -323,7 +323,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 40,
             name: "Seymur",
-            surname: "br314@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "1995-11-11",
             position: "DevOps",
             phoneNumber: "+994502345598",
@@ -331,7 +331,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 41,
             name: "Vusal",
-            surname: "roidesr@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "1990-11-11",
             position: "Tester",
             phoneNumber: "+994502345598",
@@ -339,7 +339,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 42,
             name: "Aytan",
-            surname: "kare314@gmail.com",
+            surname: "Huseynli",
             dateOfBirth: "1998-02-11",
             position: "Tester",
             phoneNumber: "+994502345598",
@@ -347,7 +347,7 @@ export const MOCK_EMPLOYEES: IUserAdminInfo = {
         {
             id: 43,
             name: "Orkhan",
-            surname: "vvsd33@gmail.com",
+            surname: "Alizade",
             dateOfBirth: "1996-09-05",
             position: "Frontend Developer",
             phoneNumber: "+994502345598",

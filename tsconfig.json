@@ -1,18 +1,3 @@
-// {
-//   "compilerOptions": {
-//       "baseUrl": "./src",
-//       "lib": ["dom", "es2015", "es2015.promise", "es2017.object"],
-//       "emitDecoratorMetadata": true,
-//       "experimentalDecorators": true,
-//       "sourceMap": true,
-//       "noImplicitAny": false,
-//       "noUnusedLocals": false,
-//       "module": "commonjs",
-//       "target": "es5",
-//       "jsx": "react"
-//   },
-//   "exclude": ["node_modules"]
-// }
 {
     "compilerOptions": {
         "target": "es5",

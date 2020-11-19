@@ -8,6 +8,7 @@ import { EditableCell } from "../../components/EditableCell";
 import { MOCK_EMPLOYEES } from "./mocks";
 import { Search } from "../../components/Search";
 import { useSearch } from "./useSearch";
+import { schema } from "./schema";
 import styles from "./employees.module.scss";
 
 const cloneMockEmployees = lodash.cloneDeep(MOCK_EMPLOYEES);
@@ -45,6 +46,17 @@ const Employees = () => {
             name: evt.target.name,
             value: evt.target.value,
         };
+
+        let val = {
+            [evt.target.name]: evt.target.value,
+        };
+
+        const result = schema
+            .validate(val, { abortEarly: false })
+            .then(() => {
+                // alert(JSON.stringify(val, null, 2));
+            })
+            .catch(console.log);
 
         let updatedEmployees = employees.data.map(function(employee, index) {
             for (let key in employee) {
@@ -115,7 +127,7 @@ const Employees = () => {
                 <Datasheet
                     columns={[
                         {
-                            name: "mark",
+                            name: "check",
                             renderFn: row => {
                                 return (
                                     <input

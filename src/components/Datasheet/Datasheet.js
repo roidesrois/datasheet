@@ -7,6 +7,7 @@ import styles from "./styles.module.scss";
 export default class Datasheet extends Component {
     renderContent() {
         const { isLoading, columns, data, dataKeyName, rowClassFn } = this.props;
+
         if (isLoading) {
             return (
                 <tr className={styles.loadingRow}>
