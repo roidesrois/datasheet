@@ -7,6 +7,7 @@ import styles from "./form.module.scss";
 export default class TextInput extends Component {
     render() {
         const { type, name, label, placeholder, hideLabel, disabled, value, id } = this.props;
+
         return (
             <div className={classnames(styles.inputRow)}>
                 {!hideLabel && <label htmlFor={name}>{label}</label>}
@@ -30,7 +31,6 @@ TextInput.propTypes = {
     label: string,
     showErrors: bool,
     placeholder: string,
-    errors: arrayOf(string.isRequired),
     value: string,
     hideLabel: bool,
     disabled: bool,

@@ -47,16 +47,13 @@ const Employees = () => {
             value: evt.target.value,
         };
 
-        let val = {
+        const val = {
             [evt.target.name]: evt.target.value,
         };
 
-        const result = schema
-            .validate(val, { abortEarly: false })
-            .then(() => {
-                // alert(JSON.stringify(val, null, 2));
-            })
-            .catch(console.log);
+        schema.validate(val, { abortEarly: false }).catch(e => {
+            console.error(e.errors);
+        });
 
         let updatedEmployees = employees.data.map(function(employee, index) {
             for (let key in employee) {
@@ -106,11 +103,11 @@ const Employees = () => {
     const viewJsonData = () => {
         const updatedData = employees.data.filter(emp => updated.includes(emp.id));
         const deletedData = employees.data.filter(emp => deleted.includes(emp.id));
-        console.log("updated: ", updatedData);
-        console.log("deleted: ", deletedData);
+        console.log("updated: ", JSON.stringify(updatedData, null, 2));
+        console.log("deleted: ", JSON.stringify(deletedData, null, 2));
     };
 
-    const handleSearch = async e => {
+    const handleSearch = e => {
         setSearchVal(e.target.value);
     };
 

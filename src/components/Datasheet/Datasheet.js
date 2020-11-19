@@ -57,7 +57,7 @@ export default class Datasheet extends Component {
                     {showHeader && (
                         <tr>
                             {columns.map(item => (
-                                <th key={item.header}>{item.header}</th>
+                                <th key={item.name}>{item.header}</th>
                             ))}
                         </tr>
                     )}
