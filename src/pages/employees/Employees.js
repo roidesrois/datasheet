@@ -22,10 +22,11 @@ const Employees = () => {
     const [updated, setUpdated] = useState([]);
     const [selected, setSelected] = useState([]);
     const [deleted, setDeleted] = useState([]);
+    const [baseData, setBaseData] = useState(cloneMockEmployees);
     const [employees, setEmployees] = useState(cloneMockEmployees);
     const { filteredData, loading } = useSearch({
         searchVal,
-        retrieve: cloneMockEmployees.data,
+        retrieve: baseData.data,
     });
 
     useEffect(() => {
@@ -38,7 +39,7 @@ const Employees = () => {
             },
             data: filteredData,
         });
-    }, [filteredData]);
+    }, [filteredData, setEmployees]);
 
     const handleEmployeesTable = evt => {
         let item = {
@@ -112,7 +113,7 @@ const Employees = () => {
     };
 
     const handleResetData = () => {
-        setEmployees(lodash.cloneDeep(MOCK_EMPLOYEES));
+        setBaseData(lodash.cloneDeep(MOCK_EMPLOYEES));
         setUpdated([]);
         setSelected([]);
         setDeleted([]);
