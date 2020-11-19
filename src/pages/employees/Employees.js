@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import * as lodash from "lodash";
 import { Datasheet } from "../../components/Datasheet";
 import { Button } from "../../components/SexyButton";
 import { Row, Container } from "../../components/Grid";
@@ -9,11 +10,7 @@ import { Search } from "../../components/Search";
 import { useSearch } from "./useSearch";
 import styles from "./employees.module.scss";
 
-const fetchEmployees = async () => {
-    return Promise.resolve(MOCK_EMPLOYEES).then(delay(500));
-};
-
-const cloneData = JSON.parse(JSON.stringify(MOCK_EMPLOYEES.data));
+const cloneMockEmployees = lodash.cloneDeep(MOCK_EMPLOYEES);
 
 const Employees = () => {
     const [page, setPageNumber] = useState(0);
@@ -24,14 +21,10 @@ const Employees = () => {
     const [updated, setUpdated] = useState([]);
     const [selected, setSelected] = useState([]);
     const [deleted, setDeleted] = useState([]);
-    const [employees, setEmployees] = useState({
-        data: cloneData,
-        pagination: MOCK_EMPLOYEES.pagination,
-    });
-
+    const [employees, setEmployees] = useState(cloneMockEmployees);
     const { filteredData, loading } = useSearch({
         searchVal,
-        retrieve: cloneData,
+        retrieve: cloneMockEmployees.data,
     });
 
     useEffect(() => {
@@ -110,10 +103,7 @@ const Employees = () => {
     };
 
     const handleResetData = () => {
-        setEmployees({
-            data: JSON.parse(JSON.stringify(MOCK_EMPLOYEES.data)),
-            pagination: MOCK_EMPLOYEES.pagination,
-        });
+        setEmployees(lodash.cloneDeep(MOCK_EMPLOYEES));
         setUpdated([]);
         setSelected([]);
         setDeleted([]);
@@ -263,8 +253,6 @@ const Employees = () => {
             <Pagination
                 defaultItemsCountPerPage={count}
                 totalItemsCount={employees && employees.pagination.total}
-                itemsCountPerPageLabel="Show on page: "
-                itemsCountPerPageOptions={[10, 30, 50, 100]}
                 onPageChange={(offset, limit) => {
                     const page = offset / count;
                     const from = 0 + count * page;

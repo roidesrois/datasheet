@@ -82,28 +82,6 @@
     }
 }
 
-.submitButton {
-    width: 100%;
-    transition: background-color 0.2s ease-in;
-    padding: 10px;
-    border: 1px solid rgba($colorDarkGrey, 0.2);
-    border-radius: 8px;
-    background-color: $colorPrimary;
-    box-shadow: 4px 4px 6px rgba($colorRealBlack, 0.2);
-    color: $colorWhite;
-    font-size: 1.8em;
-    cursor: pointer;
-    appearance: button;
-
-    &:disabled {
-        opacity: 0.2;
-    }
-
-    &:active {
-        background-color: $colorPrimaryLight;
-    }
-}
-
 .error {
     height: 33px;
 }
