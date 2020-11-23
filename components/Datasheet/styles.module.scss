@@ -1,0 +1,72 @@
+@import '../../theme/vars';
+
+.table {
+    width: 100%;
+
+    border-spacing: 0;
+    border-radius: 4px;
+    font-size: 1.1em;
+
+    td,
+    th {
+        padding: 15px 20px;
+        text-align: left;
+    }
+
+    td {
+        font-weight: 300;
+        font-weight: light;
+    }
+
+    th {
+        color: $colorDarkGrey;
+        font-weight: 400;
+        font-size: 1.2em;
+    }
+
+    tr.default:nth-child(odd) td {
+        background: $colorAlternateWhite;
+    }
+
+    tr.default:nth-child(even) td {
+        background: $colorWhite;
+    }
+
+    thead tr:first-child th {
+        &:first-child {
+            border-top-left-radius: 5px;
+        }
+        &:last-child {
+            border-top-right-radius: 5px;
+        }
+    }
+    tbody tr:last-child td {
+        &:first-child {
+            border-bottom-left-radius: 5px;
+        }
+        &:last-child {
+            border-bottom-right-radius: 5px;
+        }
+    }
+
+    .loadingRow td {
+        text-align: center;
+        color: $colorPrimary;
+        font-size: 1.5em;
+    }
+
+    .nothingFound td {
+        text-align: center;
+        color: $colorPrimary;
+        font-size: 1.5em;
+        height: 150px;
+    }
+}
+
+.spinner {
+    font-size: 2em;
+    color: $colorPrimary;
+    text-align: center;
+    margin: auto;
+    width: 40px;
+}
